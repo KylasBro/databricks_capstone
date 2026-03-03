@@ -1,0 +1,9 @@
+paths:
+  bronze: dbfs:/mnt/bronze/school_enrollment
+  silver: dbfs:/mnt/silver/school_enrollment
+  gold: dbfs:/mnt/gold/school_enrollment
+
+tables:
+  bronze_table: bronze_enrollment
+  silver_table: silver_enrollment
+  gold_table: gold_yearly_summary
