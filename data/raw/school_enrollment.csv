@@ -1,0 +1,9 @@
+school_id,school_name,region,academic_year,grade,gender,enrollment_count,avg_score
+101,Green Valley School,North,2022,Grade 1,Boys,120,78
+101,Green Valley School,North,2022,Grade 1,Girls,110,82
+102,Sunrise Public School,South,2022,Grade 2,Boys,95,74
+102,Sunrise Public School,South,2022,Grade 2,Girls,100,80
+103,Hilltop High,East,2023,Grade 3,Boys,130,69
+103,Hilltop High,East,2023,Grade 3,Girls,125,75
+104,Riverdale School,West,2023,Grade 4,Boys,140,85
+104,Riverdale School,West,2023,Grade 4,Girls,135,88
