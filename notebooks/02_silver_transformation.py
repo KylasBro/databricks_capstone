@@ -8,7 +8,7 @@
 from pyspark.sql.functions import col
 
 # Unity Catalog Configuration
-CATALOG = "education_catalog"
+CATALOG = "capstone_kailas"
 SCHEMA = "school_data"
 BRONZE_TABLE = f"{CATALOG}.{SCHEMA}.bronze_enrollment"
 SILVER_TABLE = f"{CATALOG}.{SCHEMA}.silver_enrollment"

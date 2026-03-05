@@ -9,16 +9,16 @@
 # ----------------------
 # Three-level namespace for Unity Catalog tables
 unity_catalog:
-  catalog: education_catalog           # Unity Catalog name
+  catalog: capstone_kailas              # Unity Catalog name
   schema: school_data                   # Schema (database) within the catalog
 
 # Unity Catalog Table Names (fully qualified)
 # --------------------------------------------
 # Format: catalog.schema.table_name
 tables:
-  bronze_table: education_catalog.school_data.bronze_enrollment      # Raw enrollment records
-  silver_table: education_catalog.school_data.silver_enrollment      # Cleaned enrollment records
-  gold_table: education_catalog.school_data.gold_yearly_summary      # Yearly enrollment aggregations
+  bronze_table: capstone_kailas.school_data.bronze_enrollment      # Raw enrollment records
+  silver_table: capstone_kailas.school_data.silver_enrollment      # Cleaned enrollment records
+  gold_table: capstone_kailas.school_data.gold_yearly_summary      # Yearly enrollment aggregations
 
 # Legacy DBFS Paths (for reference)
 # ----------------------------------

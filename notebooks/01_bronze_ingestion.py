@@ -6,15 +6,19 @@
 # COMMAND ----------
 
 # Unity Catalog Configuration
-CATALOG = "education_catalog"
+CATALOG = "capstone_kailas"
 SCHEMA = "school_data"
 BRONZE_TABLE = f"{CATALOG}.{SCHEMA}.bronze_enrollment"
 
 # COMMAND ----------
 
-# Create catalog and schema if they don't exist
-spark.sql(f"CREATE CATALOG IF NOT EXISTS {CATALOG}")
-spark.sql(f"CREATE SCHEMA IF NOT EXISTS {CATALOG}.{SCHEMA}")
+# Note: Catalog and schema must be created manually in Databricks UI
+# CREATE CATALOG education_catalog
+# CREATE SCHEMA education_catalog.school_data
+
+# Set the current catalog and schema
+spark.sql(f"USE CATALOG {CATALOG}")
+spark.sql(f"USE SCHEMA {SCHEMA}")
 
 # COMMAND ----------
 

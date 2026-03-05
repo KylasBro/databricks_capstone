@@ -6,7 +6,7 @@
 # COMMAND ----------
 
 # Unity Catalog Configuration
-CATALOG = "education_catalog"
+CATALOG = "capstone_kailas"
 SCHEMA = "school_data"
 SILVER_TABLE = f"{CATALOG}.{SCHEMA}.silver_enrollment"
 

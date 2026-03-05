@@ -8,7 +8,7 @@
 from pyspark.sql.functions import avg, count
 
 # Unity Catalog Configuration
-CATALOG = "education_catalog"
+CATALOG = "capstone_kailas"
 SCHEMA = "school_data"
 SILVER_TABLE = f"{CATALOG}.{SCHEMA}.silver_enrollment"
 GOLD_TABLE = f"{CATALOG}.{SCHEMA}.gold_yearly_summary"
