@@ -1,9 +1,24 @@
-paths:
-  bronze: dbfs:/mnt/bronze/school_enrollment
-  silver: dbfs:/mnt/silver/school_enrollment
-  gold: dbfs:/mnt/gold/school_enrollment
+# ============================================================
+# Education ETL Pipeline Configuration
+# ============================================================
+# This configuration file defines paths and table names for the
+# school enrollment ETL pipeline using medallion architecture.
+# ============================================================
 
+# Data Lake Paths
+# ---------------
+# DBFS (Databricks File System) paths for each layer of the
+# medallion architecture. These paths store Delta tables.
+paths:
+  bronze: dbfs:/mnt/bronze/school_enrollment  # Raw data layer (as-is from source)
+  silver: dbfs:/mnt/silver/school_enrollment  # Cleaned and transformed data
+  gold: dbfs:/mnt/gold/school_enrollment      # Aggregated business-ready data
+
+# Delta Table Names
+# -----------------
+# Table names registered in the metastore for each layer.
+# These can be queried via SQL or Spark DataFrames.
 tables:
-  bronze_table: bronze_enrollment
-  silver_table: silver_enrollment
-  gold_table: gold_yearly_summary
+  bronze_table: bronze_enrollment      # Raw enrollment records
+  silver_table: silver_enrollment      # Cleaned enrollment records
+  gold_table: gold_yearly_summary      # Yearly enrollment aggregations
