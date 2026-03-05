@@ -5,20 +5,25 @@
 # school enrollment ETL pipeline using medallion architecture.
 # ============================================================
 
-# Data Lake Paths
-# ---------------
-# DBFS (Databricks File System) paths for each layer of the
-# medallion architecture. These paths store Delta tables.
+# Unity Catalog Settings
+# ----------------------
+# Three-level namespace for Unity Catalog tables
+unity_catalog:
+  catalog: education_catalog           # Unity Catalog name
+  schema: school_data                   # Schema (database) within the catalog
+
+# Unity Catalog Table Names (fully qualified)
+# --------------------------------------------
+# Format: catalog.schema.table_name
+tables:
+  bronze_table: education_catalog.school_data.bronze_enrollment      # Raw enrollment records
+  silver_table: education_catalog.school_data.silver_enrollment      # Cleaned enrollment records
+  gold_table: education_catalog.school_data.gold_yearly_summary      # Yearly enrollment aggregations
+
+# Legacy DBFS Paths (for reference)
+# ----------------------------------
+# These paths can still be used for external data storage if needed
 paths:
   bronze: dbfs:/mnt/bronze/school_enrollment  # Raw data layer (as-is from source)
   silver: dbfs:/mnt/silver/school_enrollment  # Cleaned and transformed data
   gold: dbfs:/mnt/gold/school_enrollment      # Aggregated business-ready data
-
-# Delta Table Names
-# -----------------
-# Table names registered in the metastore for each layer.
-# These can be queried via SQL or Spark DataFrames.
-tables:
-  bronze_table: bronze_enrollment      # Raw enrollment records
-  silver_table: silver_enrollment      # Cleaned enrollment records
-  gold_table: gold_yearly_summary      # Yearly enrollment aggregations

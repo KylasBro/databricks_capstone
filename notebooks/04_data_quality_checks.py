@@ -1,31 +1,44 @@
 # Databricks notebook source
 # MAGIC %md
 # MAGIC ## Data Quality Checks
+# MAGIC This notebook validates data quality in Unity Catalog tables.
 
 # COMMAND ----------
 
-from networkx import display
-
-from src.utils.spark_session import get_spark_session
-from src.validation.data_quality import check_nulls
-
-spark = get_spark_session("DataQuality")
+# Unity Catalog Configuration
+CATALOG = "education_catalog"
+SCHEMA = "school_data"
+SILVER_TABLE = f"{CATALOG}.{SCHEMA}.silver_enrollment"
 
 # COMMAND ----------
 
-silver_path = "dbfs:/mnt/silver/school_enrollment"
-
-df_silver = spark.read.format("delta").load(silver_path)
+# Read from Silver table in Unity Catalog
+df_silver = spark.table(SILVER_TABLE)
+print(f"Validating: {SILVER_TABLE}")
 
 # COMMAND ----------
 
-is_valid = check_nulls(df_silver)
+# Check for null values in critical columns
+null_count = df_silver.filter("academic_year IS NULL OR avg_score IS NULL").count()
 
-if is_valid:
-    print("Data quality check passed ✅")
+if null_count == 0:
+    print("✅ Data quality check passed: No null values in critical columns")
 else:
-    raise Exception("Data quality check failed ❌")
+    raise Exception(f"❌ Data quality check failed: {null_count} rows with null values")
 
 # COMMAND ----------
 
+# Display summary statistics
+print("\nData Summary:")
+print(f"Total records: {df_silver.count()}")
 display(df_silver.describe())
+
+# COMMAND ----------
+
+# Validate data types
+print("\nSchema:")
+df_silver.printSchema()
+
+# COMMAND ----------
+
+print("Data quality checks completed successfully.")
