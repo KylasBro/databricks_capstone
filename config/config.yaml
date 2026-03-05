@@ -18,7 +18,9 @@ unity_catalog:
 tables:
   bronze_table: capstone_kailas.school_data.bronze_enrollment      # Raw enrollment records
   silver_table: capstone_kailas.school_data.silver_enrollment      # Cleaned enrollment records
-  gold_table: capstone_kailas.school_data.gold_yearly_summary      # Yearly enrollment aggregations
+  gold_yearly_table: capstone_kailas.school_data.gold_yearly_summary   # Yearly aggregations
+  gold_region_table: capstone_kailas.school_data.gold_region_summary   # Region-wise aggregations
+  gold_gender_table: capstone_kailas.school_data.gold_gender_summary   # Gender-wise aggregations
 
 # Legacy DBFS Paths (for reference)
 # ----------------------------------
